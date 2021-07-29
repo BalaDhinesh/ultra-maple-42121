@@ -44,10 +44,62 @@ layout: post
 
 Photo by [Anders Jildén](https://unsplash.com/photos/uO4Au3LrCtk)
 
-**Iceland** Enim nec dui nunc mattis enim ut tellus elementum sagittis. *Felis bibendum ut tristique et egestas quis ipsum suspendisse*. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Orci ac auctor augue mauris. Ut pharetra sit amet aliquam id diam. Lectus arcu bibendum at varius vel pharetra. Id nibh tortor id aliquet lectus proin nibh. Duis ut diam quam nulla porttitor massa id neque aliquam. Feugiat nibh sed pulvinar proin gravida. Dolor purus non enim praesent elementum. Pharetra convallis posuere morbi leo urna molestie. Vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere.
+# Virtual FPGA Lab - Part-1
+This is the first part of the three part blog series which covers the work done by me as part of my open source contribution to Google Summer of Code 2021 under FOSSi Foundation titled __Virtual FPGA Lab__.
 
-> Iceland, I'm in love with that country, the people are incredible. - Kit Harington
+## About the project
+Field-Programmable Gate Array(FPGA) is a hardware circuit that a user can program to carry out logical operations. FPGAs are beneficial for prototyping application-specific integrated circuits (ASICs) or processors. The advantage of FPGA being energy-efficient, flexible to reprogram, support parallelism, decreased latency made them widely used in many applications. But the flexibility of FPGAs comes at the price of the difficulty of reprogramming the circuit. FPGA’s are a bit costly and difficult to learn for beginners. Also, students don’t have access to physical FPGA Lab classes in their curriculum amidst this pandemic situation. So there is a massive demand in having an alternative option of having an online simulator for FPGA curriculum development. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit ut aliquam purus sit. Massa placerat duis ultricies lacus sed. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Pulvinar neque laoreet suspendisse interdum consectetur libero. Lacus viverra vitae congue eu consequat ac felis donec et. Imperdiet dui accumsan sit amet nulla facilisi. Faucibus turpis in eu mi bibendum neque. Magna etiam tempor orci eu. Cursus turpis massa tincidunt dui ut ornare. A condimentum vitae sapien pellentesque habitant. Ut porttitor leo a diam sollicitudin tempor id eu.
+This project __Virtual FPGA Lab__ aims to solve the problem by taking advantage of the VIZ Visualization feature in the Makerchip platform and provide visualizations of basic peripherals of an FPGA, thereby mimicking the physical lab experience.
 
-Pulvinar pellentesque habitant morbi tristique senectus et netus et. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Erat nam at lectus urna duis. Lacinia quis vel eros donec ac odio. Eget nulla facilisi etiam dignissim diam quis. Arcu dictum varius duis at consectetur lorem donec massa. Egestas tellus rutrum tellus pellentesque eu. Egestas erat imperdiet sed euismod nisi porta. Nec feugiat in fermentum posuere urna. Viverra ipsum nunc aliquet bibendum enim. Fermentum odio eu feugiat pretium. Vestibulum rhoncus est pellentesque elit. Elit ut aliquam purus sit amet luctus venenatis. Donec ac odio tempor orci dapibus ultrices in. Vitae justo eget magna fermentum. At tellus at urna condimentum mattis pellentesque id nibh tortor. Arcu dictum varius duis at consectetur lorem donec massa. Malesuada proin libero nunc consequat interdum varius sit amet. Dui accumsan sit amet nulla facilisi. Ut venenatis tellus in metus vulputate.
+Makerchip is a free web-based IDE as well as available as makerchip-app, a virtual desktop application for developing high-quality integrated circuits. You can code, compile, simulate, and debug Verilog designs, all from your browser. Your code, block diagrams, and waveforms are tightly integrated. Makerchip supports the emerging Transaction-Level Verilog standard. Transaction-Level Verilog, or TL-Verilog, represents a huge step forward, by eliminating the need for the legacy language features of Verilog and by introducing simpler syntax. At the same time, TL-Verilog adds powerful constructs for pipelines and transactions. More details about TL-Verilog: https://www.redwoodeda.com/tl-verilog
+
+## Why TL-Verilog?
+__Simple || Powerful || Flexible__
+- Visual Debug
+  - Waveform viewing have been our go-to debug tool for decades. Is there any way to visualize the simulations? Here you are!! With this cool feature, you can acheive that. Stay tuned, we will be discussing more about this.
+- Easy Pipelining
+- Organized Waveforms
+  - No need of writing testbench to see the simulation. The IDE provides an inbuilt clock and assigns random values to signals whenever it is not assigned to any value.
+- Organized Diagrams
+  - Designs are represented in logic diagrams. Very easy to go through the design hierarchy, pipelining and stages.
+- Less to code
+  - Faster development
+  - Fewer bugs 
+  - Easier maintenance
+
+My weeks of coding before the First Evaluation relies on adding the FPGA images on the VIZ canvas screen and support for visualizing FPGA LEDs, seven segment displays, LCD 16x2 display and VGA display.
+
+## Power of Visual Debug
+Let us visualize the output of a simple digital logic gates. From the GIF above, we can see that the left portion is the coding part where you can see the logic of the gates and right portion is the Visual Debug(VIZ) part where you can see the visualization of each logic gates. We can move back and forth between cycles and see which cycle currently in the top right. Also, look at the waveform of the logic from the below image. Visualization looks visually pleasing to look at the output than waveforms.
+
+__How Visual Debug is built?__
+Visual Debug is a JavaScript canvas where we used [fabric.js](http://fabricjs.com/), which is a powerful and simple Javascript HTML5 canvas library framework. It provides us to use interactive object models on top of canvas element.
+
+The real power of Visual Debug comes in play when the Verilog design is too complex and has huge lines of code. Here comes the idea of visualizing FPGA simulations, the __Virtual FPGA Lab__.
+
+
+## What makes Virtual FPGA Lab special?
+- Move back and forth between cycles so that we can visualize what's happening in each and every cycle.
+- Faster to see the output for simple designs. No need to wait for Synthesis, Implementation and Bitstream Generation.
+- Abstraction in writing the digital logic in TL-Verilog over standard HDL languages.
+- Compatible code structure (works inside and outside of Makerchip)
+
+In the second series of this blog, we will show the visualizations of FPGA LEDs, seven-segment display, LCD 16x2 display and VGA display.
+
+# Virtual FPGA Lab - Part-2
+This is the second part of the three part blog series which covers the work done by me as part of my open source contribution to Google Summer of Code 2021 under FOSSi Foundation titled __Virtual FPGA Lab__. In the second series of this blog, we will use the feature of Visual Debug and show the visualizations of FPGA LEDs, seven-segment display, LCD 16x2 display and VGA display.
+
+### FPGA Boards demonstrated in Makerchip:
+1. Basys 3 Artix-7 FPGA Trainer Board ([Product Link](https://store.digilentinc.com/basys-3-artix-7-fpga-beginner-board-recommended-for-introductory-users/)) 
+3. EDGE Artix 7 FPGA Development Board ([Product Link](https://allaboutfpga.com/product/edge-artix-7-fpga-development-board/))
+4. Zedboard Zynq-7000 ARM/FPGA SoC Development Board ([Product Link](https://www.avnet.com/wps/portal/us/products/avnet-boards/avnet-board-families/zedboard/))
+
+Currently we demonstrate using only these three boards and we plan to add more boards in the future.
+## LEDs
+![Zedboard_LED](https://user-images.githubusercontent.com/15063738/124794052-3c88ea80-df6c-11eb-9da2-1e250868b6de.gif)
+## Seven-segment display
+![Basys3_7seg](https://user-images.githubusercontent.com/15063738/124794130-532f4180-df6c-11eb-8541-0f83f9ec47c6.gif)
+## LCD 16x2 display
+
+## VGA display
