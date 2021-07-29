@@ -71,7 +71,7 @@ __Simple || Powerful || Flexible__
 My weeks of coding before the First Evaluation relies on adding the FPGA images on the VIZ canvas screen and support for visualizing FPGA LEDs, seven segment displays, LCD 16x2 display and VGA display.
 
 ## Power of Visual Debug
-![logic_gates(./images/logic_gates.gif)]
+![logic_gates](./images/logic_gates.gif)
 Let us visualize the output of a simple digital logic gates. From the GIF above, we can see that the left portion is the coding part where you can see the logic of the gates and right portion is the Visual Debug(VIZ) part where you can see the visualization of each logic gates. We can move back and forth between cycles and see which cycle currently in the top right. Also, look at the waveform of the logic from the below image. Visualization looks visually pleasing to look at the output than waveforms.
 
 __How Visual Debug is built?__
