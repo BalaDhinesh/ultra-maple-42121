@@ -72,7 +72,7 @@ My weeks of coding before the First Evaluation relies on adding the FPGA images 
 
 ## Power of Visual Debug
 ![logic_gates](./images/logic_gates.gif)
-Let us visualize the output of a simple digital logic gates. From the GIF above, we can see that the left portion is the coding part where you can see the logic of the gates and right portion is the Visual Debug(VIZ) part where you can see the visualization of each logic gates. We can move back and forth between cycles and see which cycle currently in the top right. Also, look at the waveform of the logic from the below image. Visualization looks visually pleasing to look at the output than waveforms.
+Let us first visualize the output of a simple digital logic gates. From the GIF above, we can see that the left portion is the coding part where you can see the logic of the gates and right portion is the Visual Debug(VIZ) part where you can see the visualization of each logic gates. We can move back and forth between cycles and see which cycle currently in the top right. Also, look at the waveform of the logic from the below image. Visualization looks visually pleasing to look at the output than waveforms.
 
 __How Visual Debug is built?__
 Visual Debug is a JavaScript canvas where we used [fabric.js](http://fabricjs.com/), which is a powerful and simple Javascript HTML5 canvas library framework. It provides us to use interactive object models on top of canvas element.
